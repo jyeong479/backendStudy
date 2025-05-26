@@ -1,6 +1,8 @@
 package com.example.backend.entity;
 
 import com.example.backend.repository.RestApiRepository;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,18 +17,36 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Getter
 public class RestApi {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Id
+    @Column
+    private String email;
+
+    @Column(unique = true, nullable = false)
+    private String id;
+
+    @Column(nullable = false)
+    private String password;
+
+    @Column
     private String name;
-    private String birth;
+
+    @Column
+    private String phone;
+
 
 
     public void patch(RestApi restApi) {
+        if (restApi.id != null) {
+            this.id = restApi.id;
+        }
+        if (restApi.password != null) {
+            this.password = restApi.password;
+        }
         if (restApi.name != null) {
             this.name = restApi.name;
         }
-        if (restApi.birth != null) {
-            this.birth = restApi.birth;
+        if (restApi.phone != null) {
+            this.phone = restApi.phone;
         }
     }
 }

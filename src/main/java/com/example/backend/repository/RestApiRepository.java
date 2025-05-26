@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 
 @Repository
-public interface RestApiRepository extends CrudRepository<RestApi, Long> {
+public interface RestApiRepository extends CrudRepository<RestApi, String> {
     @Override
     ArrayList<RestApi> findAll();
 }
