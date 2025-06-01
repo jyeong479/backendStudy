@@ -9,15 +9,11 @@ import lombok.*;
 @ToString
 @Getter
 @Setter
-public class RestApiForm {
+public class LoginRequestDto {
     private String email;
-    private String id;
     private String password;
-    private String name;
-    private String phone;
 
     public RestApi toEntity(){
-        return new RestApi(email, id, password, name, phone);
+        return new RestApi(email, password);
     }
-
 }
